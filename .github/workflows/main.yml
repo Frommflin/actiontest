@@ -2,7 +2,7 @@ name: Testing actions
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   react_on_push:
