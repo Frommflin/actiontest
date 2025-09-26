@@ -1,0 +1,12 @@
+name: Discord notifications
+
+on: push
+jobs: 
+  write-to-discord:
+    runs-on: ubuntu-latest
+    steps:
+    - name: discord
+      uses: sebastianpopp/discord-action@releases/v2
+      with:
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        message: ${{ github.actor }} has done a ${{ github.event_name }} to ${{ github.repository }} (commit= ${{ github.sha }})

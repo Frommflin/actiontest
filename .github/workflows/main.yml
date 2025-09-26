@@ -1,0 +1,14 @@
+name: Testing actions
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  react_on_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello world
+        run: echo 'Hello world!'
+      - name: List files
+        run: ls
