@@ -15,9 +15,19 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js 22.19.0
+      id: useNode
       uses: actions/setup-node@v4
       with:
         node-version: 22.19.0
         cache: 'npm'
     - run: npm i
     - run: npm run build
+  report:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord Report
+        uses: sebastianpopp/discord-action@releases/v2
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          message: Klara is corking on project build CI
