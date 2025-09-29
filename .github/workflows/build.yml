@@ -21,7 +21,7 @@ jobs:
         node-version: 22.19.0
         cache: 'npm'
     - run: npm i
-    - run: npm run buil
+    - run: npm run build
     - name: Discord success report
       if: ${{ success() }}
       uses: sebastianpopp/discord-action@releases/v2
