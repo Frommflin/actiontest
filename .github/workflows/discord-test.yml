@@ -5,8 +5,19 @@ jobs:
   write-to-discord:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v4
+    - uses: benjlevesque/short-sha@v3.0
+      id: short-sha
+      with:
+        length: 7
+    - run: echo $SHA
+      env: 
+        SHA: ${{ steps.short_sha.outputs.sha }}
+    - run: echo $SHA
+      env:
+        SHA: ${{ env.SHA }}
     - name: discord
       uses: sebastianpopp/discord-action@releases/v2
       with:
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        message: ${{ github.actor }} has done a ${{ github.event_name }} to ${{ github.repository }} (commit= ${{ GITHUB_SHA::7 }})
+        message: ${{ github.actor }} has done a ${{ github.event_name }} to ${{ github.repository }} (commit= ${{ github.sha }})
