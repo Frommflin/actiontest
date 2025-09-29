@@ -26,8 +26,14 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Discord Report
+      - name: Discord success report
+        if: ${{ success() }}
         uses: sebastianpopp/discord-action@releases/v2
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          message: Klara is corking on project build CI
+          message: Build step was a success
+      - name: Discord failure report
+        uses: sebastianpopp/discord-action@releases/v2
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          message: Build step was a failure
