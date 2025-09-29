@@ -15,26 +15,22 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Use Node.js 22.19.0
-      id: useNode
+      id: build
       uses: actions/setup-node@v4
       with:
         node-version: 22.19.0
         cache: 'npm'
     - run: npm i
     - run: npm run buil
-  report:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Discord success report
-        if: ${{ success() }}
-        uses: sebastianpopp/discord-action@releases/v2
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          message: Build step was a success
-      - name: Discord failure report
-        if: ${{ failure() }}
-        uses: sebastianpopp/discord-action@releases/v2
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          message: Build step was a failure
+    - name: Discord success report
+      if: ${{ success() }}
+      uses: sebastianpopp/discord-action@releases/v2
+      with:
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        message: Build step was a success
+    - name: Discord failure report
+      if: ${{ failure() }}
+      uses: sebastianpopp/discord-action@releases/v2
+      with:
+        webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        message: Build step was a failure
