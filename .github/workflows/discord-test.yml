@@ -10,7 +10,6 @@ jobs:
       id: short-sha
       with:
         length: 7
-    - run: echo $SHA
       env:
         SHA: ${{ env.SHA }}
     - name: discord
