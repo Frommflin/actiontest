@@ -10,8 +10,6 @@ jobs:
       id: short-sha
       with:
         length: 7
-      env:
-        SHA: ${{ env.SHA }}
     - name: discord
       uses: sebastianpopp/discord-action@releases/v2
       with:
