@@ -11,9 +11,6 @@ jobs:
       with:
         length: 7
     - run: echo $SHA
-      env: 
-        SHA: ${{ steps.short_sha.outputs.sha }}
-    - run: echo $SHA
       env:
         SHA: ${{ env.SHA }}
     - name: discord
