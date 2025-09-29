@@ -33,6 +33,7 @@ jobs:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           message: Build step was a success
       - name: Discord failure report
+        if: ${{ failure() }}
         uses: sebastianpopp/discord-action@releases/v2
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
