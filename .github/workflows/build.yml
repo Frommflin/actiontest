@@ -24,13 +24,18 @@ jobs:
       run: npm run build
     - name: Discord success report
       if: ${{ success() }}
-      uses: sebastianpopp/discord-action@releases/v2
+      uses: sarisia/actions-status-discord@v1
       with:
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        message: Build step was a success
+        nodetail: true
+        title: "Application build was a success"
+        description: "CI testbuild \nsucceeded"
     - name: Discord failure report
       if: ${{ failure() }}
-      uses: sebastianpopp/discord-action@releases/v2
+      
+      uses: sarisia/actions-status-discord@v1
       with:
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        message: Build step was a failure
+        nodetail: true
+        title: "Application build was a failure"
+        description: "CI testbuild \nfailed"
