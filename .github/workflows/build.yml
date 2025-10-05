@@ -27,6 +27,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       with:
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
+        noprefix: ture
         title: "✅ Build successful"
         username: Github Build
         
