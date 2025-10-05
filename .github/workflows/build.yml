@@ -27,9 +27,13 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       with:
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        nodetail: true
-        title: "Application build was a success"
-        description: "CI testbuild \nsucceeded"
+        title: "Application build"
+        description: |
+          ✅ Build succeeded
+          Commit message: ${{ github.event.head_commit.message }}
+        color: 0x00ff00
+        username: Github Build
+        
     - name: Discord failure report
       if: ${{ failure() }}
       
