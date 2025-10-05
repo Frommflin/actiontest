@@ -27,8 +27,7 @@ jobs:
       uses: sarisia/actions-status-discord@v1
       with:
         webhook: ${{ secrets.DISCORD_WEBHOOK }}
-        status: "✅"
-        title: "Build successful"
+        title: "✅ Build successful"
         username: Github Build
         
     - name: Discord failure report
